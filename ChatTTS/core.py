@@ -39,10 +39,15 @@ class Chat:
             
         return not not_finish
         
-    def load_models(self, source='huggingface'):
+    def load_models(self, model_dict={}, source='huggingface'):
         if source == 'huggingface':
             download_path = snapshot_download(repo_id="2Noise/ChatTTS", allow_patterns=["*.pt", "*.yaml"])
-            self._load(**{k: os.path.join(download_path, v) for k, v in OmegaConf.load(os.path.join(download_path, 'config', 'path.yaml')).items()})
+            model_dict = {k: os.path.join(download_path, v) for k, v in OmegaConf.load(os.path.join(download_path, 'config', 'path.yaml')).items()}
+            self._load(**model_dict)
+        if source == 'local':
+            # print(model_dict)
+            self._load(**model_dict)
+            
             
     def _load(
         self, 

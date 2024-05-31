@@ -1,0 +1,9 @@
+omegaconf==2.3.0
+vocos==0.1.0
+torch~=2.2.2
+transformers~=4.41.1
+tqdm~=4.66.4
+einops~=0.8.0
+ipython~=8.24.0
+vector_quantize_pytorch
+openai
